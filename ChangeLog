@@ -1,3 +1,5 @@
+* Fix README title line.
+
 2013-05-20 - 0.1.5
 * Use 2-space indent.
 * Also use @-prefixed variables in mime.types.erb.

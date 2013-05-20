@@ -15,7 +15,8 @@ other distributions and is very easy to port if needed.
 
 ## Examples
 
-    # Default server, with a typical minimal virtualhost and ready for PHP-FPM
+Default server, with a typical minimal virtualhost and ready for PHP-FPM :
+
     include nginx
     nginx::file { 'www.example.com.conf':
       content => template('mymodule/www.example.com.conf.erb'),
@@ -25,7 +26,7 @@ other distributions and is very easy to port if needed.
       source => 'puppet:///modules/nginx/php.conf.inc',
     }
 
-# Sample configuration file mymodule/www.example.com.conf.erb :
+Sample configuration file `mymodule/www.example.com.conf.erb` mentioned above :
 
     # Fix for "upstream sent too big header ..." errors
     fastcgi_buffers 8 8k;
