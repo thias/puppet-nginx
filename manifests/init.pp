@@ -44,101 +44,101 @@
 # Sample Usage :
 #  include nginx
 #  class { 'nginx':
-#      mime_types => {
-#          'text/plain' => 'ks repo',
-#      }
+#    mime_types => {
+#      'text/plain' => 'ks repo',
+#    }
 #  }
 #
 class nginx (
-    $remove_default_conf = $nginx::params::remove_default_conf,
-    # Main options
-    $env = [],
-    # HTTP module options
-    $user = $nginx::params::user,
-    $worker_processes = $::processorcount,
-    $worker_rlimit_nofile = false,
-    $worker_connections = '1024',
-    $default_type = 'application/octet-stream',
-    $sendfile = 'on',
-    $tcp_nopush = 'off',
-    $keepalive_timeout = '65',
-    $keepalive_requests = '100',
-    $send_timeout = '60',
-    $log_not_found = 'off',
-    $server_tokens = 'off',
-    $server_name_in_redirect = 'off',
-    $server_names_hash_bucket_size = '64',
-    $gzip = 'on',
-    $gzip_min_length = '0',
-    $gzip_types = 'text/plain',
-    $geoip_country = false,
-    $geoip_city = false,
-    $index = 'index.html',
-    $upstream = {},
-    $fastcgi_buffers = undef,
-    $fastcgi_buffer_size = undef,
-    $proxy_buffers = undef,
-    $proxy_buffer_size = undef,
-    $http_raw_lines = [],
-    # Module options
-    $autoindex = 'off',
-    # mime.types
-    $mime_types = false
+  $remove_default_conf = $nginx::params::remove_default_conf,
+  # Main options
+  $env = [],
+  # HTTP module options
+  $user = $nginx::params::user,
+  $worker_processes = $::processorcount,
+  $worker_rlimit_nofile = false,
+  $worker_connections = '1024',
+  $default_type = 'application/octet-stream',
+  $sendfile = 'on',
+  $tcp_nopush = 'off',
+  $keepalive_timeout = '65',
+  $keepalive_requests = '100',
+  $send_timeout = '60',
+  $log_not_found = 'off',
+  $server_tokens = 'off',
+  $server_name_in_redirect = 'off',
+  $server_names_hash_bucket_size = '64',
+  $gzip = 'on',
+  $gzip_min_length = '0',
+  $gzip_types = 'text/plain',
+  $geoip_country = false,
+  $geoip_city = false,
+  $index = 'index.html',
+  $upstream = {},
+  $fastcgi_buffers = undef,
+  $fastcgi_buffer_size = undef,
+  $proxy_buffers = undef,
+  $proxy_buffer_size = undef,
+  $http_raw_lines = [],
+  # Module options
+  $autoindex = 'off',
+  # mime.types
+  $mime_types = false
 ) inherits nginx::params {
 
-    package { $nginx::params::package:
-        alias  => 'nginx',
-        ensure => installed,
-    }
+  package { $nginx::params::package:
+    alias  => 'nginx',
+    ensure => installed,
+  }
 
-    service { $nginx::params::service:
-        enable    => true,
-        ensure    => running,
-        restart   => $nginx::params::service_restart,
-        hasstatus => true,
-        require   => Package['nginx'],
-        alias     => 'nginx',
-    }
+  service { $nginx::params::service:
+    enable    => true,
+    ensure    => running,
+    restart   => $nginx::params::service_restart,
+    hasstatus => true,
+    require   => Package['nginx'],
+    alias     => 'nginx',
+  }
 
-    # Main configuration file
-    file { "${confdir}/nginx.conf":
-        owner   => 'root',
-        group   => 'root',
-        mode    => '0644',
-        content => template('nginx/nginx.conf.erb'),
-        notify  => Service['nginx'],
-        require => Package['nginx'],
-    }
-    # Directory for configuration snippets
-    file { "${confdir}/conf.d":
-        owner   => 'root',
-        group   => 'root',
-        mode    => '0755',
-        require => Package['nginx'],
-    }
+  # Main configuration file
+  file { "${confdir}/nginx.conf":
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0644',
+    content => template('nginx/nginx.conf.erb'),
+    notify  => Service['nginx'],
+    require => Package['nginx'],
+  }
+  # Directory for configuration snippets
+  file { "${confdir}/conf.d":
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0755',
+    require => Package['nginx'],
+  }
 
-    # Default configuration file included in the package (usually unwanted)
-    if $remove_default_conf {
-        file { "${confdir}/conf.d/default.conf":
-            owner   => 'root',
-            group   => 'root',
-            mode    => '0644',
-            content => "# Empty, not removed, to not reappear when the package is updated.\n",
-            require => Package['nginx'],
-        }
+  # Default configuration file included in the package (usually unwanted)
+  if $remove_default_conf {
+    file { "${confdir}/conf.d/default.conf":
+      owner   => 'root',
+      group   => 'root',
+      mode    => '0644',
+      content => "# Empty, not removed, to not reappear when the package is updated.\n",
+      require => Package['nginx'],
     }
+  }
 
-    # Since mime types can only be set from a single "types" directive
-    if $mime_types {
-        file { "${confdir}/mime.types":
-            owner   => 'root',
-            group   => 'root',
-            mode    => '0644',
-            content => template('nginx/mime.types.erb'),
-            require => Package['nginx'],
-            notify  => Service['nginx'],
-        }
+  # Since mime types can only be set from a single "types" directive
+  if $mime_types {
+    file { "${confdir}/mime.types":
+      owner   => 'root',
+      group   => 'root',
+      mode    => '0644',
+      content => template('nginx/mime.types.erb'),
+      require => Package['nginx'],
+      notify  => Service['nginx'],
     }
+  }
 
 }
 

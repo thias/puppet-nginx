@@ -1,3 +1,3 @@
 class { 'nginx':
-    worker_processes => $::processorcount,
+  worker_processes => $::processorcount,
 }

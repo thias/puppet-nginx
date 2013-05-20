@@ -12,22 +12,22 @@
 #
 # Sample Usage :
 #  nginx::file { 'example1.conf':
-#      source => 'puppet:///files/nginx/example1.conf',
+#    source => 'puppet:///files/nginx/example1.conf',
 #  }
 #  nginx::file { 'example2.conf':
-#      content => template('mymodule/example2.conf.erb'),
+#    content => template('mymodule/example2.conf.erb'),
 #  }
 #
 define nginx::file (
-    $content = undef,
-    $source  = undef
+  $content = undef,
+  $source  = undef
 ) {
-    include nginx::params
-    file { "${nginx::params::confdir}/conf.d/${title}":
-        content => $content,
-        source  => $source,
-        notify  => Service['nginx'],
-        require => Package['nginx'],
-    }
+  include nginx::params
+  file { "${nginx::params::confdir}/conf.d/${title}":
+    content => $content,
+    source  => $source,
+    notify  => Service['nginx'],
+    require => Package['nginx'],
+  }
 }
 
