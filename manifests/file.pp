@@ -27,7 +27,7 @@ define nginx::file (
     content => $content,
     source  => $source,
     notify  => Service['nginx'],
-    require => Package['nginx'],
+    require => Class['nginx'],
   }
 }
 
