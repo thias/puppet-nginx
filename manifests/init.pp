@@ -111,6 +111,7 @@ class nginx (
   }
   # Directory for configuration snippets
   file { "${confdir}/conf.d":
+    ensure  => directory,
     owner   => 'root',
     group   => 'root',
     mode    => '0755',
