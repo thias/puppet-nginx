@@ -86,19 +86,8 @@ class nginx (
   $mime_types = false
 ) inherits nginx::params {
 
-  package { $nginx::params::package:
-    alias  => 'nginx',
-    ensure => installed,
-  }
-
-  service { $nginx::params::service:
-    enable    => true,
-    ensure    => running,
-    restart   => $nginx::params::service_restart,
-    hasstatus => true,
-    require   => Package['nginx'],
-    alias     => 'nginx',
-  }
+  include nginx::install,
+          nginx::service
 
   # Main configuration file
   file { "${confdir}/nginx.conf":
@@ -106,8 +95,6 @@ class nginx (
     group   => 'root',
     mode    => '0644',
     content => template('nginx/nginx.conf.erb'),
-    notify  => Service['nginx'],
-    require => Package['nginx'],
   }
   # Directory for configuration snippets
   file { "${confdir}/conf.d":
@@ -115,7 +102,6 @@ class nginx (
     owner   => 'root',
     group   => 'root',
     mode    => '0755',
-    require => Package['nginx'],
   }
 
   # Default configuration file included in the package (usually unwanted)
@@ -125,7 +111,6 @@ class nginx (
       group   => 'root',
       mode    => '0644',
       content => "# Empty, not removed, to not reappear when the package is updated.\n",
-      require => Package['nginx'],
     }
   }
 
@@ -136,10 +121,9 @@ class nginx (
       group   => 'root',
       mode    => '0644',
       content => template('nginx/mime.types.erb'),
-      require => Package['nginx'],
-      notify  => Service['nginx'],
     }
   }
 
+  Class['nginx::install'] -> Class['nginx']
+  Class['nginx'] ~> Class['nginx::service']
 }
-

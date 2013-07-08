@@ -23,10 +23,11 @@ define nginx::file (
   $source  = undef
 ) {
   include nginx::params
+
   file { "${nginx::params::confdir}/conf.d/${title}":
     content => $content,
     source  => $source,
-    notify  => Service['nginx'],
+    notify  => Class['nginx::service'],
     require => Class['nginx'],
   }
 }
