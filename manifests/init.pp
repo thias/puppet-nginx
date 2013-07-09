@@ -50,11 +50,12 @@
 #  }
 #
 class nginx (
-  $remove_default_conf = $nginx::params::remove_default_conf,
+  $confdir = $::nginx::params::confdir,
+  $remove_default_conf = $::nginx::params::remove_default_conf,
   # Main options
   $env = [],
   # HTTP module options
-  $user = $nginx::params::user,
+  $user = $::nginx::params::user,
   $worker_processes = $::processorcount,
   $worker_rlimit_nofile = false,
   $worker_connections = '1024',
@@ -84,17 +85,17 @@ class nginx (
   $autoindex = 'off',
   # mime.types
   $mime_types = false
-) inherits nginx::params {
+) inherits ::nginx::params {
 
-  package { $nginx::params::package:
+  package { $::nginx::params::package:
     alias  => 'nginx',
     ensure => installed,
   }
 
-  service { $nginx::params::service:
+  service { $::nginx::params::service:
     enable    => true,
     ensure    => running,
-    restart   => $nginx::params::service_restart,
+    restart   => $::nginx::params::service_restart,
     hasstatus => true,
     require   => Package['nginx'],
     alias     => 'nginx',

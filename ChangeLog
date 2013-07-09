@@ -1,5 +1,4 @@
 * Fix README title line.
-* Fix possible circular dependency between init and file.
 * Fix conf.d directory creation.
 
 2013-05-20 - 0.1.5
