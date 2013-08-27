@@ -108,5 +108,11 @@ proxy_buffer_size <%= @proxy_buffer_size %>;
     # Include separately managed configuration file(s)
     include /etc/nginx/conf.d/*.conf;
 
+    # Include enabled site(s)
+<% case @operatingsystem when 'Debian', 'Ubuntu' -%>
+    include /etc/nginx/sites-enabled/*;
+<% end -%>
+
+
 }
 
