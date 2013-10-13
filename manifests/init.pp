@@ -127,6 +127,7 @@ class nginx (
       mode    => '0644',
       content => "# Empty, not removed, to not reappear when the package is updated.\n",
       require => Package['nginx'],
+      notify  => Service['nginx'],
     }
   }
 
