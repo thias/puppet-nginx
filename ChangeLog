@@ -1,5 +1,7 @@
+2013-10-14 - 0.1.6
 * Fix README title line.
 * Fix conf.d directory creation.
+* Fix when changing default.conf (jaysh).
 
 2013-05-20 - 0.1.5
 * Use 2-space indent.
