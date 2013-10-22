@@ -1,3 +1,5 @@
+* Follow nginx's recommendation of using try_files in php.conf.inc (jaysh).
+
 2013-10-14 - 0.1.6
 * Fix README title line.
 * Fix conf.d directory creation.
