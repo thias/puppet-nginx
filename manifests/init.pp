@@ -58,6 +58,7 @@ class nginx (
   $user = $::nginx::params::user,
   $worker_processes = $::processorcount,
   $worker_rlimit_nofile = false,
+  $error_log = '/var/log/nginx/error.log',
   $worker_connections = '1024',
   $default_type = 'application/octet-stream',
   $sendfile = 'on',

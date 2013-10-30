@@ -6,7 +6,7 @@ worker_processes <%= @worker_processes %>;
 <% if @worker_rlimit_nofile -%>
 worker_rlimit_nofile <%= @worker_rlimit_nofile %>;
 <% end -%>
-error_log /var/log/nginx/error.log;
+error_log <%= @error_log %>;
 pid /var/run/nginx.pid;
 
 events {
