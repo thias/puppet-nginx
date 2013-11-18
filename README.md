@@ -44,3 +44,6 @@ Sample configuration file `mymodule/www.example.com.conf.erb` mentioned above :
       error_log /var/log/nginx/www.example.com-error.log;
     }
 
+If you intend to use a PHP framework where all non-existing requests must be
+handled by `/index.php`, then also install and include `php-to-index.conf.inc`.
+
