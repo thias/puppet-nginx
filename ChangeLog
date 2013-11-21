@@ -1,6 +1,7 @@
 * Follow nginx's recommendation of using try_files in php.conf.inc (jaysh).
 * Make error_log configurable.
 * Also include a useful php-to-index.conf.inc example.
+* Add support for global ssl_certificate and ssl_certificate_key directives.
 
 2013-10-14 - 0.1.6
 * Fix README title line.

@@ -97,6 +97,12 @@ proxy_buffers <%= @proxy_buffers %>;
 <% if @proxy_buffer_size -%>
 proxy_buffer_size <%= @proxy_buffer_size %>;
 <% end -%>
+<% if @ssl_certificate -%>
+ssl_certificate <%= @ssl_certificate %>;
+<% end -%>
+<% if @ssl_certificate_key -%>
+ssl_certificate_key <%= @ssl_certificate_key %>;
+<% end -%>
 <% if !@http_raw_lines.empty? -%>
 
     # Other

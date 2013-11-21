@@ -81,6 +81,8 @@ class nginx (
   $fastcgi_buffer_size = undef,
   $proxy_buffers = undef,
   $proxy_buffer_size = undef,
+  $ssl_certificate = undef,
+  $ssl_certificate_key = undef,
   $http_raw_lines = [],
   # Module options
   $autoindex = 'off',
