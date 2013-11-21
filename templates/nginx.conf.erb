@@ -86,22 +86,22 @@ http {
 <% end -%>
 <% end -%>
 <% if @fastcgi_buffers -%>
-fastcgi_buffers <%= @fastcgi_buffers %>;
+    fastcgi_buffers <%= @fastcgi_buffers %>;
 <% end -%>
 <% if @fastcgi_buffer_size -%>
-fastcgi_buffer_size <%= @fastcgi_buffer_size %>;
+    fastcgi_buffer_size <%= @fastcgi_buffer_size %>;
 <% end -%>
 <% if @proxy_buffers -%>
-proxy_buffers <%= @proxy_buffers %>;
+    proxy_buffers <%= @proxy_buffers %>;
 <% end -%>
 <% if @proxy_buffer_size -%>
-proxy_buffer_size <%= @proxy_buffer_size %>;
+    proxy_buffer_size <%= @proxy_buffer_size %>;
 <% end -%>
 <% if @ssl_certificate -%>
-ssl_certificate <%= @ssl_certificate %>;
+    ssl_certificate <%= @ssl_certificate %>;
 <% end -%>
 <% if @ssl_certificate_key -%>
-ssl_certificate_key <%= @ssl_certificate_key %>;
+    ssl_certificate_key <%= @ssl_certificate_key %>;
 <% end -%>
 <% if !@http_raw_lines.empty? -%>
 
