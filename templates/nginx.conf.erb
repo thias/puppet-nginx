@@ -3,6 +3,9 @@
 
 user <%= @user %>;
 worker_processes <%= @worker_processes %>;
+<% if @worker_cpu_affinity -%>
+worker_cpu_affinity <%= @worker_cpu_affinity %>;
+<% end -%>
 <% if @worker_rlimit_nofile -%>
 worker_rlimit_nofile <%= @worker_rlimit_nofile %>;
 <% end -%>
@@ -60,6 +63,9 @@ http {
 <% if @gzip == "on" -%>
     gzip_disable "msie6";
     gzip_min_length <%= @gzip_min_length %>;
+    <%- if @gzip_proxied -%>
+    gzip_proxied <%= @gzip_proxied -%>;
+    <%- end -%>
     gzip_types <%= @gzip_types %>;
 <% end -%>
 <% if @geoip_country -%>

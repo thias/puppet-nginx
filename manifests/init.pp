@@ -56,7 +56,8 @@ class nginx (
   $env = [],
   # HTTP module options
   $user = $::nginx::params::user,
-  $worker_processes = $::processorcount,
+  $worker_processes = 'auto',
+  $worker_cpu_affinity = undef,
   $worker_rlimit_nofile = false,
   $error_log = '/var/log/nginx/error.log',
   $worker_connections = '1024',
@@ -72,6 +73,7 @@ class nginx (
   $server_names_hash_bucket_size = '64',
   $gzip = 'on',
   $gzip_min_length = '0',
+  $gzip_proxied = undef,
   $gzip_types = 'text/plain',
   $geoip_country = false,
   $geoip_city = false,

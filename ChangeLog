@@ -1,3 +1,7 @@
+* Add support for gzip_proxied.
+* Add support for worker_cpu_affinity.
+* Change worker_processes default to 'auto', which makes most sense.
+
 2013-11-21 - 0.1.7
 * Follow nginx's recommendation of using try_files in php.conf.inc (jaysh).
 * Make error_log configurable.
