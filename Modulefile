@@ -1,5 +1,5 @@
 name 'thias-nginx'
-version '0.1.7'
+version '0.1.8'
 source 'git://github.com/thias/puppet-nginx'
 author 'Matthias Saou'
 license 'Apache 2.0'
