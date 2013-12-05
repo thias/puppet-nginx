@@ -112,7 +112,7 @@ http {
 <% if !@http_raw_lines.empty? -%>
 
     # Other
-<% @http_raw_lines.empty.each do |line| -%>
+<% @http_raw_lines.each do |line| -%>
     <%= line %>;
 <% end -%>
 <% end -%>
