@@ -1,3 +1,5 @@
+* Fix http_raw_lines (whurleyf1).
+
 2013-11-27 - 0.1.8
 * Add support for gzip_proxied.
 * Add support for worker_cpu_affinity.
