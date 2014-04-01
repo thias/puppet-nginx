@@ -1,4 +1,5 @@
 * Fix http_raw_lines (whurleyf1).
+* Fix owner, group and mode of nginx::file resources.
 
 2013-11-27 - 0.1.8
 * Add support for gzip_proxied.

@@ -19,11 +19,17 @@
 #  }
 #
 define nginx::file (
+  $owner   = 'root',
+  $group   = 'root',
+  $mode    = '0644',
   $content = undef,
   $source  = undef
 ) {
-  include ::nginx::params
+  include '::nginx::params'
   file { "${::nginx::params::confdir}/conf.d/${title}":
+    owner   => $owner,
+    group   => $group,
+    mode    => $mode,
     content => $content,
     source  => $source,
     notify  => Service['nginx'],
