@@ -56,7 +56,7 @@ class nginx (
   $env = [],
   # HTTP module options
   $user = $::nginx::params::user,
-  $worker_processes = 'auto',
+  $worker_processes = $::processorcount,
   $worker_cpu_affinity = undef,
   $worker_rlimit_nofile = false,
   $error_log = '/var/log/nginx/error.log',
