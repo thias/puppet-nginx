@@ -8,6 +8,7 @@
 # Sample Usage :
 #  include nginx::params
 #
+class nginx::params {
   # The easy bunch
   $service = 'nginx'
   $confdir = '/etc/nginx'
