@@ -8,15 +8,14 @@
 # Sample Usage :
 #  include nginx::params
 #
-class nginx::params {
   # The easy bunch
   $service = 'nginx'
-  $user    = 'nginx'
   $confdir = '/etc/nginx'
-  # package
+  # user
   case $::operatingsystem {
-    'Gentoo': { $package = 'www-servers/nginx' }
-     default: { $package = 'nginx' }
+    'Debian',
+    'Ubuntu': { $user = 'www-data' }
+     default: { $user = 'nginx' }
   }
   # service restart
   case $::operatingsystem {
