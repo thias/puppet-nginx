@@ -18,6 +18,11 @@ class nginx::params {
     'Ubuntu': { $user = 'www-data' }
      default: { $user = 'nginx' }
   }
+  # package
+  case $::operatingsystem {
+    'Gentoo': { $package = 'www-servers/nginx' }
+     default: { $package = 'nginx' }
+  }
   # service restart
   case $::operatingsystem {
     'Fedora',
