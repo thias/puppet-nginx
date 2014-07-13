@@ -11,8 +11,13 @@
 class nginx::params {
   # The easy bunch
   $service = 'nginx'
-  $user    = 'nginx'
   $confdir = '/etc/nginx'
+  # user
+  case $::operatingsystem {
+    'Debian',
+    'Ubuntu': { $user = 'www-data' }
+     default: { $user = 'nginx' }
+  }
   # package
   case $::operatingsystem {
     'Gentoo': { $package = 'www-servers/nginx' }
@@ -31,6 +36,12 @@ class nginx::params {
     'RedHat',
     'CentOS': { $remove_default_conf = true }
      default: { $remove_default_conf = false }
+  }
+  # include /etc/nginx/sites-enabled/*
+  case $::operatingsystem {
+    'Debian',
+    'Ubuntu': { $sites_enabled = true }
+     default: { $sites_enabled = false }
   }
 }
 

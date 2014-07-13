@@ -52,6 +52,7 @@
 class nginx (
   $confdir = $::nginx::params::confdir,
   $remove_default_conf = $::nginx::params::remove_default_conf,
+  $sites_enabled = $::nginx::params::sites_enabled,
   # Main options
   $env = [],
   # HTTP module options

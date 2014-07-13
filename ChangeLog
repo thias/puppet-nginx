@@ -1,4 +1,5 @@
 * Revert worker_processes default value since 'auto' only works with 1.2+
+* Add basic Dabian and Ubuntu support (#3 @DavidGriffith, #8 @tomav).
 
 2014-04-01 - 0.1.9
 * Fix http_raw_lines (whurleyf1).
