@@ -77,11 +77,11 @@ types {
     video/x-ms-asf                        asx asf;
     video/x-ms-wmv                        wmv;
     video/x-msvideo                       avi;
-<% if @mime_types -%>
+    <%- if @mime_types -%>
 
     # Custom additional mime types
-<% @mime_types.sort_by {|key,value| key}.each do |key,value| -%>
+    <%- @mime_types.sort_by {|key,value| key}.each do |key,value| -%>
     <%= key %> <%= value %>;
-<% end -%>
-<% end -%>
+    <%- end -%>
+    <%- end -%>
 }

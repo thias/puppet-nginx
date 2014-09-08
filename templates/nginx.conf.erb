@@ -60,65 +60,65 @@ http {
 
     # Compression
     gzip <%= @gzip %>;
-<% if @gzip == "on" -%>
+    <%- if @gzip == "on" -%>
     gzip_disable "msie6";
     gzip_min_length <%= @gzip_min_length %>;
     <%- if @gzip_proxied -%>
     gzip_proxied <%= @gzip_proxied -%>;
     <%- end -%>
     gzip_types <%= @gzip_types %>;
-<% end -%>
-<% if @geoip_country -%>
+    <%- end -%>
+    <%- if @geoip_country -%>
 
     # GeoIP country database
     geoip_country <%= @geoip_country %>;
-<% end -%>
-<% if @geoip_city -%>
+    <%- end -%>
+    <%- if @geoip_city -%>
 
     # GeoIP city database
     geoip_city <%= @geoip_city %>;
-<% end -%>
-<% if !@upstream.empty? -%>
+    <%- end -%>
+    <%- if !@upstream.empty? -%>
 
     # Upstreams
-<% @upstream.sort_by {|key,value| key}.each do |key,value| -%>
-<% key.each do |upstream| -%>
+    <%- @upstream.sort_by {|key,value| key}.each do |key,value| -%>
+    <%- key.each do |upstream| -%>
     upstream <%= upstream %> {
-<% value.each do |line| -%>
+    <%- value.each do |line| -%>
         <%= line %>;
-<% end -%>
+    <%- end -%>
     }
-<% end -%>
-<% end -%>
-<% end -%>
-<% if @fastcgi_buffers -%>
+    <%- end -%>
+    <%- end -%>
+    <%- end -%>
+    <%- if @fastcgi_buffers -%>
     fastcgi_buffers <%= @fastcgi_buffers %>;
-<% end -%>
-<% if @fastcgi_buffer_size -%>
+    <%- end -%>
+    <%- if @fastcgi_buffer_size -%>
     fastcgi_buffer_size <%= @fastcgi_buffer_size %>;
-<% end -%>
+    <%- end -%>
     <%- if @fastcgi_read_timeout -%>
     fastcgi_read_timeout <%= @fastcgi_read_timeout %>;
     <%- end -%>
-<% if @proxy_buffers -%>
+    <%- if @proxy_buffers -%>
     proxy_buffers <%= @proxy_buffers %>;
-<% end -%>
-<% if @proxy_buffer_size -%>
+    <%- end -%>
+    <%- if @proxy_buffer_size -%>
     proxy_buffer_size <%= @proxy_buffer_size %>;
-<% end -%>
-<% if @ssl_certificate -%>
+    <%- end -%>
+    <%- if @ssl_certificate -%>
     ssl_certificate <%= @ssl_certificate %>;
-<% end -%>
-<% if @ssl_certificate_key -%>
+    <%- end -%>
+    <%- if @ssl_certificate_key -%>
     ssl_certificate_key <%= @ssl_certificate_key %>;
-<% end -%>
-<% if !@http_raw_lines.empty? -%>
+    <%- end -%>
+    <%- if !@http_raw_lines.empty? -%>
 
     # Other
-<% @http_raw_lines.each do |line| -%>
+    <%- @http_raw_lines.each do |line| -%>
     <%= line %>;
-<% end -%>
-<% end -%>
+    <%- end -%>
+    <%- end -%>
 
     # Include separately managed configuration file(s)
     include /etc/nginx/conf.d/*.conf;

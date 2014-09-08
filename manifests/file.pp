@@ -23,7 +23,7 @@ define nginx::file (
   $group   = 'root',
   $mode    = '0644',
   $content = undef,
-  $source  = undef
+  $source  = undef,
 ) {
   include '::nginx::params'
   file { "${::nginx::params::confdir}/conf.d/${title}":
