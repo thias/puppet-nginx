@@ -82,6 +82,7 @@ class nginx (
   $upstream = {},
   $fastcgi_buffers = undef,
   $fastcgi_buffer_size = undef,
+  $fastcgi_read_timeout = undef,
   $proxy_buffers = undef,
   $proxy_buffer_size = undef,
   $ssl_certificate = undef,
