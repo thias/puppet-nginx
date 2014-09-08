@@ -97,6 +97,9 @@ http {
 <% if @fastcgi_buffer_size -%>
     fastcgi_buffer_size <%= @fastcgi_buffer_size %>;
 <% end -%>
+    <%- if @fastcgi_read_timeout -%>
+    fastcgi_read_timeout <%= @fastcgi_read_timeout %>;
+    <%- end -%>
 <% if @proxy_buffers -%>
     proxy_buffers <%= @proxy_buffers %>;
 <% end -%>
