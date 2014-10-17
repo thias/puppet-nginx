@@ -1,3 +1,5 @@
+* Add SELinux support, RHEL 6.6 now targets nginx with httpd_t.
+
 2014-09-09 - 1.0.0
 * Revert worker_processes default value since 'auto' only works with 1.2+
 * Add basic Debian and Ubuntu support (#3 @DavidGriffith, #8 @tomav).

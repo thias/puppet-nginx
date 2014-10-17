@@ -53,6 +53,9 @@ class nginx (
   $confdir                       = $::nginx::params::confdir,
   $remove_default_conf           = $::nginx::params::remove_default_conf,
   $sites_enabled                 = $::nginx::params::sites_enabled,
+  $selinux                       = true,
+  $selboolean_on                 = [],
+  $selboolean_off                = [],
   # Main options
   $env                           = [],
   # HTTP module options
@@ -149,6 +152,17 @@ class nginx (
       notify  => Service['nginx'],
     }
   }
+
+  # SELinux (check with facts that the node has SELinux in Enforcing mode)
+  if $selinux and $::selinux == 'true' and $::selinux_enforced == 'true' {
+    Selboolean { persistent => true }
+    # Special case : We know when it's required or not
+    if $worker_rlimit_nofile {
+      selboolean { 'httpd_setrlimit': value => 'on' }
+    }
+    selboolean { $selboolean_on: value => 'on' }
+    selboolean { $selboolean_off: value => 'off' }
+  } 
 
 }
 
