@@ -82,13 +82,11 @@ http {
 
     # Upstreams
     <%- @upstream.sort_by {|key,value| key}.each do |key,value| -%>
-    <%- key.each do |upstream| -%>
-    upstream <%= upstream %> {
+    upstream <%= key %> {
     <%- value.each do |line| -%>
         <%= line %>;
     <%- end -%>
     }
-    <%- end -%>
     <%- end -%>
     <%- end -%>
     <%- if @fastcgi_buffers -%>

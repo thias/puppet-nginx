@@ -1,3 +1,5 @@
+* Fix nginx.conf.erb upstream with recent puppet versions (#9).
+
 2014-10-21 - 1.0.1
 * Add SELinux support, RHEL 6.6 now targets nginx with httpd_t.
 
