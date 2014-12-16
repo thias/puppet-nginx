@@ -1,55 +1,56 @@
 * Update mime.types with current nginx 1.6 content.
+* Clean ups to make puppet lint happy.
 
-2014-12-02 - 1.0.2
+#### 2014-12-02 - 1.0.2
 * Fix nginx.conf.erb upstream with recent puppet versions (#9).
 
-2014-10-21 - 1.0.1
+#### 2014-10-21 - 1.0.1
 * Add SELinux support, RHEL 6.6 now targets nginx with httpd_t.
 
-2014-09-09 - 1.0.0
+#### 2014-09-09 - 1.0.0
 * Revert worker_processes default value since 'auto' only works with 1.2+
 * Add basic Debian and Ubuntu support (#3 @DavidGriffith, #8 @tomav).
 * Add support for fastcgi_read_timeout.
 
-2014-04-01 - 0.1.9
+#### 2014-04-01 - 0.1.9
 * Fix http_raw_lines (whurleyf1).
 * Fix owner, group and mode of nginx::file resources.
 
-2013-11-27 - 0.1.8
+#### 2013-11-27 - 0.1.8
 * Add support for gzip_proxied.
 * Add support for worker_cpu_affinity.
 * Change worker_processes default to 'auto', which makes most sense.
 
-2013-11-21 - 0.1.7
-* Follow nginx's recommendation of using try_files in php.conf.inc (jaysh).
+#### 2013-11-21 - 0.1.7
+* Follow recommendation of using try_files in php.conf.inc (jaysh).
 * Make error_log configurable.
 * Also include a useful php-to-index.conf.inc example.
 * Add support for global ssl_certificate and ssl_certificate_key directives.
 
-2013-10-14 - 0.1.6
+#### 2013-10-14 - 0.1.6
 * Fix README title line.
 * Fix conf.d directory creation.
 * Fix when changing default.conf (jaysh).
 
-2013-05-20 - 0.1.5
+#### 2013-05-20 - 0.1.5
 * Use 2-space indent.
 * Also use @-prefixed variables in mime.types.erb.
 
-2012-12-18 - 0.1.4
+#### 2012-12-18 - 0.1.4
 * Add options for proxy and fastcgi buffers.
 
-2012-09-19 - 0.1.3
+#### 2012-09-19 - 0.1.3
 * Update README and include mentioned example php.conf.inc file.
 * Add mime_types hash to allow adding mime type extensions.
 
-2012-07-17 - 0.1.2
+#### 2012-07-17 - 0.1.2
 * Fix markdown in the README.
 * Move the service restart command to params, fix for Gentoo.
 * Add support for specifying "upstream" as hashes.
 * Add support for http_raw_lines for simple cases with no config snippet.
 * Fix \n in the disabled default.conf.
 
-2012-03-12 - 0.1.1
+#### 2012-03-12 - 0.1.1
 * Clean up the nginx module to match current puppetlabs guidelines.
 * Rename the conf definition to file, to be consistent with apache_httpd::file.
 * Add the params class to split out distro-specific parameters.

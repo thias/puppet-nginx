@@ -135,7 +135,7 @@ class nginx (
       owner   => 'root',
       group   => 'root',
       mode    => '0644',
-      content => "# Empty, not removed, to not reappear when the package is updated.\n",
+      content => "# Empty, not removed, to not reappear when the package is updated.\n", # lint:ignore:80chars
       require => Package['nginx'],
       notify  => Service['nginx'],
     }
@@ -154,6 +154,7 @@ class nginx (
   }
 
   # SELinux (check with facts that the node has SELinux in Enforcing mode)
+  # lint:ignore:quoted_booleans
   if $selinux and $::selinux == 'true' and $::selinux_enforced == 'true' {
     Selboolean { persistent => true }
     # Special case : We know when it's required or not
@@ -162,7 +163,8 @@ class nginx (
     }
     selboolean { $selboolean_on: value => 'on' }
     selboolean { $selboolean_off: value => 'off' }
-  } 
+  }
+  # lint:endignore
 
 }
 

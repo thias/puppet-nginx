@@ -16,32 +16,32 @@ class nginx::params {
   case $::operatingsystem {
     'Debian',
     'Ubuntu': { $user = 'www-data' }
-     default: { $user = 'nginx' }
+    default:  { $user = 'nginx' }
   }
   # package
   case $::operatingsystem {
     'Gentoo': { $package = 'www-servers/nginx' }
-     default: { $package = 'nginx' }
+    default:  { $package = 'nginx' }
   }
   # service restart
   case $::operatingsystem {
     'Fedora',
     'RedHat',
     'CentOS': { $service_restart = '/sbin/service nginx reload' }
-     default: { $service_restart = '/etc/init.d/nginx reload' }
+    default:  { $service_restart = '/etc/init.d/nginx reload' }
   }
   # remove_default_conf
   case $::operatingsystem {
     'Fedora',
     'RedHat',
     'CentOS': { $remove_default_conf = true }
-     default: { $remove_default_conf = false }
+    default:  { $remove_default_conf = false }
   }
   # include /etc/nginx/sites-enabled/*
   case $::operatingsystem {
     'Debian',
     'Ubuntu': { $sites_enabled = true }
-     default: { $sites_enabled = false }
+    default:  { $sites_enabled = false }
   }
 }
 
