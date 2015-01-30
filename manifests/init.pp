@@ -77,6 +77,7 @@ class nginx (
   $server_names_hash_bucket_size = '64',
   $gzip                          = 'on',
   $gzip_min_length               = '0',
+  $gzip_comp_level               = undef,
   $gzip_proxied                  = undef,
   $gzip_types                    = 'text/plain',
   $geoip_country                 = undef,

@@ -63,6 +63,9 @@ http {
     <%- if @gzip == "on" -%>
     gzip_disable "msie6";
     gzip_min_length <%= @gzip_min_length %>;
+    <%- if @gzip_comp_level -%>
+    gzip_comp_level <%= @gzip_comp_level -%>;
+    <%- end -%>
     <%- if @gzip_proxied -%>
     gzip_proxied <%= @gzip_proxied -%>;
     <%- end -%>

@@ -1,3 +1,5 @@
+* Add gzip_comp_level parameter.
+
 #### 2014-12-16 - 1.0.3
 * Update mime.types with current nginx 1.6 content.
 * Clean ups to make puppet lint happy.
