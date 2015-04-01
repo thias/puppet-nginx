@@ -1,3 +1,4 @@
+#### 2015-04-01 - 1.0.4
 * Add gzip_comp_level parameter.
 
 #### 2014-12-16 - 1.0.3

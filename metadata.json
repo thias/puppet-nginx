@@ -1,6 +1,6 @@
 {
   "name": "thias-nginx",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "author": "Matthias Saou",
   "license": "Apache-2.0",
   "summary": "NGINX web server module",
@@ -20,11 +20,13 @@
   ],
   "requirements": [
     {
+    "name": "pe",
+    "version_requirement": "3.x"
+    },
+    {
     "name": "puppet",
     "version_requirement": ">=2.7.20 <4.0.0"
     }
   ],
-  "description": "Install, enable and configure an NGINX web server instance.",
-  "dependencies": [
-  ]
+  "dependencies": []
 }
