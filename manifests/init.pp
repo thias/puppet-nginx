@@ -89,6 +89,10 @@ class nginx (
   $fastcgi_read_timeout          = undef,
   $proxy_buffers                 = undef,
   $proxy_buffer_size             = undef,
+  $ssl_ciphers                   = undef,
+  $ssl_protocols                 = undef,
+  $ssl_prefer_server_ciphers     = undef,
+  $ssl_session_cache             = undef,
   $ssl_certificate               = undef,
   $ssl_certificate_key           = undef,
   $http_raw_lines                = [],
@@ -99,12 +103,12 @@ class nginx (
 ) inherits ::nginx::params {
 
   package { $::nginx::params::package:
-    ensure => installed,
+    ensure => 'installed',
     alias  => 'nginx',
   }
 
   service { $::nginx::params::service:
-    ensure    => running,
+    ensure    => 'running',
     alias     => 'nginx',
     enable    => true,
     restart   => $::nginx::params::service_restart,
@@ -123,7 +127,7 @@ class nginx (
   }
   # Directory for configuration snippets
   file { "${confdir}/conf.d":
-    ensure  => directory,
+    ensure  => 'directory',
     owner   => 'root',
     group   => 'root',
     mode    => '0755',
@@ -155,8 +159,10 @@ class nginx (
   }
 
   # SELinux (check with facts that the node has SELinux in Enforcing mode)
+  # + support both legacy string facts and newer boolean facts
   # lint:ignore:quoted_booleans
-  if $selinux and $::selinux == 'true' and $::selinux_enforced == 'true' {
+  if $selinux and ( ( $::selinux == 'true' and $::selinux_enforced == 'true' )
+  or ( $::selinux == true and $::selinux_enforced == true ) ) {
     Selboolean { persistent => true }
     # Special case : We know when it's required or not
     if $worker_rlimit_nofile {

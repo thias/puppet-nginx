@@ -1,3 +1,5 @@
+* Add more ssl_* parameters.
+
 #### 2015-04-01 - 1.0.4
 * Add gzip_comp_level parameter.
 
