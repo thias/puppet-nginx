@@ -1,4 +1,5 @@
 * Add more ssl_* parameters.
+* Make params values easy to override using hiera.
 
 #### 2015-04-01 - 1.0.4
 * Add gzip_comp_level parameter.

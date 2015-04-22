@@ -50,7 +50,10 @@
 #  }
 #
 class nginx (
+  $service                       = $::nginx::params::service,
   $confdir                       = $::nginx::params::confdir,
+  $package                       = $::nginx::params::package,
+  $service_restart               = $::nginx::params::service_restart,
   $remove_default_conf           = $::nginx::params::remove_default_conf,
   $sites_enabled                 = $::nginx::params::sites_enabled,
   $selinux                       = true,
@@ -62,7 +65,7 @@ class nginx (
   $user                          = $::nginx::params::user,
   $worker_processes              = $::processorcount,
   $worker_cpu_affinity           = undef,
-  $worker_rlimit_nofile          = false,
+  $worker_rlimit_nofile          = undef,
   $error_log                     = '/var/log/nginx/error.log',
   $worker_connections            = '1024',
   $default_type                  = 'application/octet-stream',
@@ -102,16 +105,16 @@ class nginx (
   $mime_types                    = undef,
 ) inherits ::nginx::params {
 
-  package { $::nginx::params::package:
+  package { $package:
     ensure => 'installed',
     alias  => 'nginx',
   }
 
-  service { $::nginx::params::service:
+  service { $service:
     ensure    => 'running',
     alias     => 'nginx',
     enable    => true,
-    restart   => $::nginx::params::service_restart,
+    restart   => $service_restart,
     hasstatus => true,
     require   => Package['nginx'],
   }
