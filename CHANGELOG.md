@@ -1,3 +1,6 @@
+#### 2015-08-21 - 1.0.6
+* Add more ssl_* parameters.
+
 #### 2015-04-28 - 1.0.5
 * Add more ssl_* parameters.
 * Make params values easy to override using hiera.
