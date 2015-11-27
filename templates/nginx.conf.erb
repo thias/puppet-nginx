@@ -9,7 +9,9 @@ worker_cpu_affinity <%= @worker_cpu_affinity %>;
 <% if @worker_rlimit_nofile -%>
 worker_rlimit_nofile <%= @worker_rlimit_nofile %>;
 <% end -%>
-error_log <%= @error_log %>;
+<%- @error_log.each do |logfile| -%>
+error_log <%= logfile %>;
+<%- end -%>
 pid /var/run/nginx.pid;
 
 events {
