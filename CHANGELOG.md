@@ -1,3 +1,5 @@
+* Add support for nginx::file ensure => absent.
+
 #### 2015-12-01 - 1.0.7
 * Add support for multiple error_log by using an array.
 

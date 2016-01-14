@@ -19,6 +19,7 @@
 #  }
 #
 define nginx::file (
+  $ensure  = undef,
   $owner   = 'root',
   $group   = 'root',
   $mode    = '0644',
@@ -27,6 +28,7 @@ define nginx::file (
 ) {
   include '::nginx::params'
   file { "${::nginx::params::confdir}/conf.d/${title}":
+    ensure  => $ensure,
     owner   => $owner,
     group   => $group,
     mode    => $mode,
