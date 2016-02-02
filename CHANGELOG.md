@@ -1,3 +1,4 @@
+#### 2016-02-02 - 1.0.8
 * Add support for nginx::file ensure => absent.
 
 #### 2015-12-01 - 1.0.7
