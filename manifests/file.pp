@@ -25,9 +25,14 @@ define nginx::file (
   $mode    = '0644',
   $content = undef,
   $source  = undef,
+  $confd   = true,
 ) {
   include '::nginx::params'
-  file { "${::nginx::params::confdir}/conf.d/${title}":
+  $subdir = $confd ? {
+    true  => '/conf.d',
+    false => '',
+  }
+  file { "${::nginx::params::confdir}${subdir}/${title}":
     ensure  => $ensure,
     owner   => $owner,
     group   => $group,
