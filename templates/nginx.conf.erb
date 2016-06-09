@@ -18,6 +18,11 @@ error_log <%= @error_log %>;
 <% end -%>
 pid /var/run/nginx.pid;
 
+<% if @modular -%>
+# Load dynamic modules. See /usr/share/nginx/README.fedora.
+include /usr/share/nginx/modules/*.conf;
+
+<% end -%>
 events {
 
     # max_clients = worker_processes * worker_connections

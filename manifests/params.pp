@@ -43,5 +43,23 @@ class nginx::params {
     'Ubuntu': { $sites_enabled = true }
     default:  { $sites_enabled = false }
   }
+  # modular 1.10+
+  case $::operatingsystem {
+    'Fedora': {
+      if versioncmp($::operatingsystemrelease, '24') >= 0 {
+        $modular = true
+      } else {
+        $modular = false
+      }
+    }
+    'RedHat','CentOS': {
+      if versioncmp($::operatingsystemrelease, '8') >= 0 {
+        $modular = true
+      } else {
+        $modular = false
+      }
+    }
+    default:  { $modular = false }
+  }
 }
 

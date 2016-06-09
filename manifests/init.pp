@@ -56,6 +56,9 @@ class nginx (
   $service_restart               = $::nginx::params::service_restart,
   $remove_default_conf           = $::nginx::params::remove_default_conf,
   $sites_enabled                 = $::nginx::params::sites_enabled,
+  $modular                       = $::nginx::params::modular,
+  $modules                       = [],
+  $modules_absent                = [],
   $selinux                       = true,
   $selboolean_on                 = [],
   $selboolean_off                = [],
@@ -111,6 +114,11 @@ class nginx (
   package { $package:
     ensure => 'installed',
     alias  => 'nginx',
+  }
+
+  if $modular == true {
+    nginx::module { $modules: }
+    nginx::module { $modules_absent: ensure => 'absent' }
   }
 
   service { $service:

@@ -12,7 +12,25 @@ other distributions and is very easy to port if needed.
 * `nginx` : Main class for the NGINX web server.
 * `nginx::file` : Manage additional configuration snippets.
 
+## Modules
+
+Starting with nginx 1.10, there are now loadable modules available. The
+`modular` parameter is set to `true` by default for Fedora 24+ and RHEL 8+
+but may also be explicitly set on other releases when using 1.10+ packages.
+
+The `$modules` array is used to set modules to be installed and the
+`$modules_absent` array is used to set modules to be purged.
+
 ## Examples
+
+Modular nginx 1.10+ packages with two non-default modules installed :
+
+```puppet
+class { '::nginx:'
+  modular => true,
+  modules => [ 'http-perl', 'stream' ],
+}
+```
 
 Default server, with a typical minimal virtualhost and ready for PHP-FPM :
 
