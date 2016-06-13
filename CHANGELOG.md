@@ -1,5 +1,6 @@
 * Add support for modular nginx 1.10+ packages.
 * Add support for `file` in main `confdir` instead of `conf.d` subdir.
+* Add facts to report nginx majversion, minversion and full version.
 
 #### 2016-02-02 - 1.0.8
 * Add support for nginx::file ensure => absent.
