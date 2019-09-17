@@ -1,3 +1,6 @@
+#### 2019-09-17 - 1.0.10
+* Rebase mime.types to latest 1.16.1 version.
+
 #### 2016-06-14 - 1.0.9
 * Add support for modular nginx 1.10+ packages.
 * Add support for `file` in main `confdir` instead of `conf.d` subdir.
