@@ -40,7 +40,9 @@ class { '::nginx':
   fastcgi_buffers     => '8 8k',
   fastcgi_buffer_size => '8k',
   upstream => {
-    fpmbackend => 'server unix:/var/run/php-fpm-www.sock',
+    fpmbackend => [
+      'server unix:/var/run/php-fpm-www.sock',
+    ],
   },
 }
 nginx::file { 'www.example.com.conf':

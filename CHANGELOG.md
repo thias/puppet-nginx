@@ -1,3 +1,5 @@
+* Fix README upstream example, fixes #11 (@jmetzger).
+
 #### 2019-09-17 - 1.0.10
 * Rebase mime.types to latest 1.16.1 version.
 
