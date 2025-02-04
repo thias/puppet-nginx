@@ -13,47 +13,47 @@ class nginx::params {
   $service = 'nginx'
   $confdir = '/etc/nginx'
   # user
-  case $::operatingsystem {
+  case $facts['os']['name'] {
     'Debian',
     'Ubuntu': { $user = 'www-data' }
     default:  { $user = 'nginx' }
   }
   # package
-  case $::operatingsystem {
+  case $facts['os']['name'] {
     'Gentoo': { $package = 'www-servers/nginx' }
     default:  { $package = 'nginx' }
   }
   # service restart
-  case $::operatingsystem {
+  case $facts['os']['name'] {
     'Fedora',
     'RedHat',
     'CentOS': { $service_restart = '/sbin/service nginx reload' }
     default:  { $service_restart = '/etc/init.d/nginx reload' }
   }
   # remove_default_conf
-  case $::operatingsystem {
+  case $facts['os']['name'] {
     'Fedora',
     'RedHat',
     'CentOS': { $remove_default_conf = true }
     default:  { $remove_default_conf = false }
   }
   # include /etc/nginx/sites-enabled/*
-  case $::operatingsystem {
+  case $facts['os']['name'] {
     'Debian',
     'Ubuntu': { $sites_enabled = true }
     default:  { $sites_enabled = false }
   }
   # modular 1.10+
-  case $::operatingsystem {
+  case $facts['os']['name'] {
     'Fedora': {
-      if versioncmp($::operatingsystemrelease, '24') >= 0 {
+      if versioncmp($facts['os']['release']['major'], '24') >= 0 {
         $modular = true
       } else {
         $modular = false
       }
     }
     'RedHat','CentOS': {
-      if versioncmp($::operatingsystemrelease, '8') >= 0 {
+      if versioncmp($facts['os']['release']['major'], '8') >= 0 {
         $modular = true
       } else {
         $modular = false

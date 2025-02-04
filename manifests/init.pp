@@ -66,7 +66,7 @@ class nginx (
   $env                           = [],
   # HTTP module options
   $user                          = $::nginx::params::user,
-  $worker_processes              = $::processorcount,
+  $worker_processes              = $facts['processors']['count'],
   $worker_cpu_affinity           = undef,
   $worker_rlimit_nofile          = undef,
   $error_log                     = '/var/log/nginx/error.log',
@@ -173,10 +173,7 @@ class nginx (
   }
 
   # SELinux (check with facts that the node has SELinux in Enforcing mode)
-  # + support both legacy string facts and newer boolean facts
-  # lint:ignore:quoted_booleans
-  if $selinux and ( ( $::selinux == 'true' and $::selinux_enforced == 'true' )
-  or ( $::selinux == true and $::selinux_enforced == true ) ) {
+  if getvar('facts.os.selinux.enforced') == true {
     Selboolean { persistent => true }
     # Special case : We know when it's required or not
     if $worker_rlimit_nofile {
@@ -185,7 +182,6 @@ class nginx (
     selboolean { $selboolean_on: value => 'on' }
     selboolean { $selboolean_off: value => 'off' }
   }
-  # lint:endignore
 
 }
 
