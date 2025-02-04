@@ -12,6 +12,7 @@ class nginx::params {
   # The easy bunch
   $service = 'nginx'
   $confdir = '/etc/nginx'
+  $service_restart = '/bin/systemctl reload nginx'
   # user
   case $facts['os']['name'] {
     'Debian',
@@ -22,13 +23,6 @@ class nginx::params {
   case $facts['os']['name'] {
     'Gentoo': { $package = 'www-servers/nginx' }
     default:  { $package = 'nginx' }
-  }
-  # service restart
-  case $facts['os']['name'] {
-    'Fedora',
-    'RedHat',
-    'CentOS': { $service_restart = '/sbin/service nginx reload' }
-    default:  { $service_restart = '/etc/init.d/nginx reload' }
   }
   # remove_default_conf
   case $facts['os']['name'] {

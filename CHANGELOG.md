@@ -1,4 +1,5 @@
 * Fix README upstream example, fixes #11 (@jmetzger).
+* Switch reload to use systemd.
 * Remove legacy facts usage.
 
 #### 2019-09-17 - 1.0.10
