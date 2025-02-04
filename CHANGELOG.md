@@ -1,6 +1,9 @@
+#### 2025-02-04 - 1.0.12
+* Remove legacy facts usage.
+
+#### 2024-04-11 - 1.0.11
 * Fix README upstream example, fixes #11 (@jmetzger).
 * Switch reload to use systemd.
-* Remove legacy facts usage.
 
 #### 2019-09-17 - 1.0.10
 * Rebase mime.types to latest 1.16.1 version.
